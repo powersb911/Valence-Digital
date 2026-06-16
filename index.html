@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valence Digital — A Digital Consulting Stop for You & Your Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #0a0a0a;
+    --bg-card: #141414;
+    --bg-card-hover: #1a1a1a;
+    --bg-section: #111111;
+    --bg-light: #f5f5f5;
+    --bg-white: #ffffff;
+    --text-white: #ffffff;
+    --text-light: #b0b0b0;
+    --text-muted: #6b6b6b;
+    --text-dark: #1a1a1a;
+    --accent: #1a5f96;
+    --accent-hover: #144d7a;
+    --accent-soft: rgba(26, 95, 150, 0.15);
+    --border: rgba(255,255,255,0.08);
+    --border-light: rgba(255,255,255,0.15);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-white);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: var(--text-white); }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+  }
+  .nav-brand .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--accent);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: white;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-light);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-white); }
+  .nav-cta {
+    background: var(--accent) !important;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent-hover) !important; transform: translateY(-1px); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    width: 24px; height: 2px;
+    background: var(--text-white);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 160px 48px 100px;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(26,95,150,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+  .hero-label .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 800px;
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,95,150,0.3); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--border-light);
+  }
+  .btn-outline:hover { border-color: var(--text-white); background: rgba(255,255,255,0.05); }
+  .btn .arrow { font-size: 1.1rem; }
+
+  /* ── MARQUEE ── */
+  .marquee {
+    background: var(--bg-section);
+    padding: 20px 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 45s linear infinite;
+    gap: 48px;
+    padding-right: 48px;
+  }
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-light);
+  }
+  .marquee-num {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+  .marquee-sep {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    align-self: center;
+    opacity: 0.5;
+  }
+
+  /* ── SECTION SHARED ── */
+  .section {
+    padding: 120px 48px;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px; height: 2px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .section-title .muted { color: var(--text-muted); }
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* ── SERVICES / END-TO-END ── */
+  .services {
+    background: var(--bg-section);
+  }
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  /* ── EXPANDABLE CARDS ── */
+  .expand-cards {
+    display: flex;
+    gap: 12px;
+    height: 420px;
+    margin-top: 48px;
+  }
+  .expand-card {
+    flex: 1;
+    min-width: 0;
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border);
+  }
+  .expand-card:hover {
+    flex: 3.5;
+    border-color: rgba(255,255,255,0.2);
+  }
+  .expand-card-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .expand-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 40%, transparent 100%);
+    z-index: 1;
+  }
+  .expand-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 24px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .expand-card-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    opacity: 0.8;
+  }
+  .expand-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text-white);
+    margin-bottom: 0;
+    transition: margin-bottom 0.4s;
+  }
+  .expand-card:hover h3 {
+    margin-bottom: 14px;
+    font-size: 1.35rem;
+  }
+  .expand-card-desc {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 0.1s;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+  }
+  .expand-card:hover .expand-card-desc {
+    max-height: 200px;
+    opacity: 1;
+  }
+  .expand-card-line {
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 12px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .expand-card:hover .expand-card-line {
+    width: 40px;
+  }
+
+  /* Card gradient backgrounds */
+  .expand-card:nth-child(1) .expand-card-bg { background: linear-gradient(135deg, #0a0f1a 0%, #0f2847 40%, #163a6b 100%); }
+  .expand-card:nth-child(2) .expand-card-bg { background: linear-gradient(135deg, #0a1a14 0%, #0f3d2a 40%, #1a5c3e 100%); }
+  .expand-card:nth-child(3) .expand-card-bg { background: linear-gradient(135deg, #1a0f1a 0%, #3b1547 40%, #5c1e6b 100%); }
+  .expand-card:nth-child(4) .expand-card-bg { background: linear-gradient(135deg, #1a1408 0%, #3d2e0a 40%, #5c4510 100%); }
+  .expand-card:nth-child(5) .expand-card-bg { background: linear-gradient(135deg, #0a1a1a 0%, #12474d 40%, #1a6b6b 100%); }
+
+  /* ── PROCESS SECTION ── */
+  .process {
+    background: var(--bg-dark);
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 64px;
+  }
+  .process-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    display: flex;
+    gap: 24px;
+    transition: all 0.3s;
+  }
+  .process-card:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+  .process-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+  .process-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .process-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ── PORTFOLIO / CASE STUDIES ── */
+  .portfolio {
+    background: var(--bg-section);
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+  .portfolio-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .portfolio-card:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  }
+  .portfolio-thumb {
+    width: 100%;
+    height: 220px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-thumb img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: top 3s ease-in-out;
+  }
+  .portfolio-card:hover .portfolio-thumb img {
+    top: calc(-100% + 220px);
+  }
+  .portfolio-thumb .thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .portfolio-thumb .thumb-placeholder .site-icon {
+    font-size: 2.5rem;
+    opacity: 0.4;
+  }
+  .portfolio-thumb .thumb-placeholder .site-url {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+  .portfolio-card a.portfolio-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .portfolio-thumb .coming-soon-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    background: rgba(26, 95, 150, 0.9);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .portfolio-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, var(--bg-card) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .portfolio-body {
+    padding: 24px;
+  }
+  .portfolio-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .portfolio-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .portfolio-card .desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ── THE STREAM / BLOG ── */
+  .stream {
+    background: var(--bg-dark);
+  }
+  .stream-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .stream-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .stream-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    transition: all 0.3s;
+  }
+  .stream-card:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+  .stream-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .stream-date {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .stream-cat {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .stream-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .stream-card p {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    padding: 100px 48px;
+    background: var(--bg-section);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(26,95,150,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-inner h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .cta-inner p {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT SPLIT ── */
+  .contact-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+  }
+  .contact-left {
+    background: var(--bg-dark);
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-left h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .contact-left p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 440px;
+  }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+  .contact-row .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .contact-row .value {
+    font-size: 0.95rem;
+    color: var(--text-white);
+    font-weight: 500;
+  }
+  .contact-row .value a { border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .contact-row .value a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+  .contact-right {
+    background: var(--bg-card);
+    padding: 80px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-right::before {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(26,95,150,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .contact-form {
+    width: 100%;
+    max-width: 440px;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-form h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+  .form-group {
+    margin-bottom: 18px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-white);
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--accent);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select { cursor: pointer; }
+  .form-group select option { background: var(--bg-dark); }
+  .btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .btn-submit:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border);
+    padding: 64px 48px 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .brand-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-brand .brand-name .logo-mark {
+    width: 28px; height: 28px;
+    background: var(--accent);
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 0.75rem;
+  }
+  .footer-brand p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    margin-bottom: 18px;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-col a {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--text-white); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-socials {
+    display: flex; gap: 16px;
+  }
+  .footer-socials a {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .footer-socials a:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 768px) {
+    .nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 72px; left: 0; right: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(20px);
+      padding: 24px;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hamburger { display: flex; }
+    .hero { padding: 140px 20px 60px; min-height: auto; }
+    .hero h1 { font-size: 2.4rem; }
+    .marquee-item { font-size: 0.9rem; }
+    .marquee-num { font-size: 1rem; }
+    .section { padding: 80px 20px; }
+    .expand-cards { flex-direction: column; height: auto; }
+    .expand-card { min-height: 80px; }
+    .expand-card:hover { flex: none; }
+    .expand-card-desc { max-height: 200px; opacity: 1; }
+    .expand-card h3 { margin-bottom: 10px; }
+    .expand-card-line { width: 30px; }
+    .process-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .stream-grid { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; }
+    .contact-right { border-left: none; border-top: 1px solid var(--border); }
+    .contact-left, .contact-right { padding: 60px 20px; }
+    .cta-banner { padding: 80px 20px; }
+    .footer { padding: 48px 20px 24px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .marquee { padding: 14px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-brand">
+    <span class="logo-mark">VD</span>
+    Valence Digital
+  </a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#stream">Insights</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">
+    <span class="dot"></span>
+    Now Booking Q3 2026
+  </div>
+  <h1>The Digital Consulting <span class="accent">Stop</span> for You &amp; Your Business</h1>
+  <p class="hero-sub">We combine behavioral science and digital strategy to build websites and systems that actually convert. No fluff, no mystery retainers &mdash; just measurable growth for small businesses and nonprofits.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn btn-primary">Book a Discovery Call <span class="arrow">&rarr;</span></a>
+    <a href="services.html" class="btn btn-outline">Explore Services</a>
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-num">97%</span> &mdash; of people check GBP online before visiting</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">75%</span> of users judge credibility by web design alone.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">2%</span> The average small business website converts less than 2% of visitors.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">53%</span> abandon mobile pages that take more than 3s to load.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">8 seconds</span> &mdash; the average attention span on a webpage.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">5-9%</span> How much one more star on Yelp increases revenue by.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">97%</span> &mdash; of people check GBP online before visiting</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">75%</span> of users judge credibility by web design alone.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">2%</span> The average small business website converts less than 2% of visitors.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">53%</span> abandon mobile pages that take more than 3s to load.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">8 seconds</span> &mdash; the average attention span on a webpage.</span>
+    <span class="marquee-sep">&#10022;</span>
+    <span class="marquee-item"><span class="marquee-num">5-9%</span> How much one more star on Yelp increases revenue by.</span>
+  </div>
+</div>
+
+<!-- SERVICES (End-to-End Project Delivery) -->
+<section class="section services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">End-to-End <span class="muted">Project Delivery</span></h2>
+      <p class="section-desc">From the first discovery call to the final analytics report, every engagement is structured, predictable, and built to produce outcomes you can measure.</p>
+    </div>
+    <a href="#contact" class="btn btn-outline">Start a Project <span class="arrow">&rarr;</span></a>
+  </div>
+
+  <div class="expand-cards">
+    <div class="expand-card">
+      <div class="expand-card-bg"></div>
+      <div class="expand-card-overlay"></div>
+      <div class="expand-card-content">
+        <div class="expand-card-num">01</div>
+        <h3>Conversion-Optimized Web Design</h3>
+        <div class="expand-card-line"></div>
+        <div class="expand-card-desc">We build fast-loading, mobile-optimized websites tailored for local small businesses. By applying behavioral design principles to every element, we ensure visitors move naturally toward calling or booking.</div>
+      </div>
+    </div>
+    <div class="expand-card">
+      <div class="expand-card-bg"></div>
+      <div class="expand-card-overlay"></div>
+      <div class="expand-card-content">
+        <div class="expand-card-num">02</div>
+        <h3>Local Search &amp; Visibility</h3>
+        <div class="expand-card-line"></div>
+        <div class="expand-card-desc">We establish and grow your local search presence through comprehensive Google Business Profile management. We keep your profile active and ranking with weekly posts, complete optimization, and review monitoring.</div>
+      </div>
+    </div>
+    <div class="expand-card">
+      <div class="expand-card-bg"></div>
+      <div class="expand-card-overlay"></div>
+      <div class="expand-card-content">
+        <div class="expand-card-num">03</div>
+        <h3>Behavior-Driven Social Media</h3>
+        <div class="expand-card-line"></div>
+        <div class="expand-card-desc">We create social media content designed with specific behavioral prompts. This scientific approach ensures that interacting with your brand feels organic and natural, rather than pushy.</div>
+      </div>
+    </div>
+    <div class="expand-card">
+      <div class="expand-card-bg"></div>
+      <div class="expand-card-overlay"></div>
+      <div class="expand-card-content">
+        <div class="expand-card-num">04</div>
+        <h3>Lead Capture &amp; Review Systems</h3>
+        <div class="expand-card-line"></div>
+        <div class="expand-card-desc">We turn your digital presence into a measurable revenue system. This includes building out quote request flows, call tracking, and automated processes for generating high-impact Google reviews.</div>
+      </div>
+    </div>
+    <div class="expand-card">
+      <div class="expand-card-bg"></div>
+      <div class="expand-card-overlay"></div>
+      <div class="expand-card-content">
+        <div class="expand-card-num">05</div>
+        <h3>Measurable Revenue Growth</h3>
+        <div class="expand-card-line"></div>
+        <div class="expand-card-desc">We transform your digital presence into a measurable revenue system. Rather than focusing solely on visibility, we build infrastructure designed to generate more calls, more bookings, and more repeat customers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process" id="process">
+  <div class="section-label">Our Process</div>
+  <h2 class="section-title">How We <span class="muted">Deliver Results</span></h2>
+  <p class="section-desc">Three deliberate steps. No long contracts, no mystery deliverables, no retainers that run forever.</p>
+
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-num">01</div>
+      <div>
+        <h3>Discovery Call</h3>
+        <p>30 minutes, no cost, no obligation. You explain your business and goals. We listen for the gaps where your digital presence is leaking customers. You leave with a clear-eyed assessment of fit and cost.</p>
+      </div>
+    </div>
+
+    <div class="process-card">
+      <div class="process-num">02</div>
+      <div>
+        <h3>Digital Audit &amp; Debrief</h3>
+        <p>We audit your website, search presence, social channels, and competitors. Every section gets a grade and written justification, followed by a prioritized action plan ranked by impact.</p>
+      </div>
+    </div>
+
+    <div class="process-card">
+      <div class="process-num">03</div>
+      <div>
+        <h3>Take Action</h3>
+        <p>Fixed cost, defined deliverables. You choose a tier that fits. At the end, renew, upgrade, take everything in-house, or walk away. No locked-in contracts.</p>
+      </div>
+    </div>
+
+    <div class="process-card">
+      <div class="process-num">04</div>
+      <div>
+        <h3>Measure &amp; Iterate</h3>
+        <p>Monthly plain-language reports: search impressions, website visits, conversion rates, and demographics. At sprint end, we review the full arc and produce board-ready documentation.</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:48px;">
+    <a href="services.html" class="btn btn-outline">More Info &rarr;</a>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section portfolio" id="portfolio">
+  <div class="section-label">Recent Work</div>
+  <h2 class="section-title">Projects That <span class="muted">Moved the Needle</span></h2>
+  <p class="section-desc">Real businesses, real outcomes. Each engagement started with a conversation and ended with measurable growth.</p>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <a class="portfolio-link" href="https://rdserviceslkn.services/" target="_blank" rel="noopener">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio-rd-services.png" alt="RD Services of LKN website screenshot">
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">Home Services</div>
+          <h3>RD Services of LKN</h3>
+          <p class="desc">Service-area business website with lead capture forms, Google Business Profile optimization, and an automated follow-up sequence that doubled their quote-to-close rate.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="portfolio-card">
+      <a class="portfolio-link" href="https://mycomfycouchcounseling.com/" target="_blank" rel="noopener">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio-comfy-couch.png" alt="My Comfy Couch Counseling website screenshot">
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">Mental Health Counseling</div>
+          <h3>My Comfy Couch Counseling</h3>
+          <p class="desc">Teletherapy practice website with HIPAA-conscious design, intake form integration, and a content strategy that built organic search presence from zero.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="portfolio-card">
+      <a class="portfolio-link" href="https://powersb911.github.io/Faith-Revival-Website/" target="_blank" rel="noopener">
+        <div class="portfolio-thumb">
+          <img src="images/portfolio-faith-revival.png" alt="Faith Revival Church website screenshot">
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-tag">Nonprofit &amp; Church</div>
+          <h3>Faith Revival Church</h3>
+          <p class="desc">Full digital build for a nondenominational church. Website with leadership profiles, event calendar, and community engagement tools.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="portfolio-thumb">
+        <div class="thumb-placeholder" style="background: linear-gradient(135deg, #1a2e1a 0%, #16213e 50%, #0f3460 100%);">
+          <span class="coming-soon-badge">Coming Soon</span>
+          <span class="site-icon">&#9749;</span>
+          <span class="site-url">957 Mobile Cafe</span>
+        </div>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tag">Food &amp; Beverage</div>
+        <h3>957 Mobile Cafe</h3>
+        <p class="desc">A longstanding nonprofit organization which provides meals to their community daily at no charge. This site will be used to manage their volunteer signup process and provide a way for them to engage with their community.</p>
+      </div>
+    </div>
+
+    <div class="portfolio-card">
+      <div class="portfolio-thumb">
+        <div class="thumb-placeholder" style="background: linear-gradient(135deg, #2e1a1a 0%, #3d2d1b 50%, #1a1a2e 100%);">
+          <span class="coming-soon-badge">Coming Soon</span>
+          <span class="site-icon">&#9733;</span>
+          <span class="site-url">Hiddenite Helpers</span>
+        </div>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-tag">Food Pantry</div>
+        <h3>Hiddenite Helpers</h3>
+        <p class="desc">Food pantry which supports the local community throuhg food donations and volunteer signup. This site will be used to obtain more doantions and improve their visibilty within their community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE STREAM -->
+<section class="section stream" id="stream">
+  <div class="stream-header">
+    <div>
+      <div class="section-label">The Stream</div>
+      <h2 class="section-title">Insights &amp; <span class="muted">Perspectives</span></h2>
+    </div>
+    <a href="#" class="btn btn-outline">View All Posts <span class="arrow">&rarr;</span></a>
+  </div>
+
+  <div class="stream-grid">
+    <div class="stream-card">
+      <div class="stream-meta">
+        <span class="stream-date">June 2026</span>
+        <span class="stream-cat">Behavioral Design</span>
+      </div>
+      <h3>Why 88% of Visitors Never Come Back (And What to Do About It)</h3>
+      <p>The science behind first impressions online, and three behavioral interventions that reduce bounce rates without redesigning your entire site.</p>
+    </div>
+
+    <div class="stream-card">
+      <div class="stream-meta">
+        <span class="stream-date">May 2026</span>
+        <span class="stream-cat">Local SEO</span>
+      </div>
+      <h3>Google Business Profile: The Free Tool Most Small Businesses Ignore</h3>
+      <p>Your GBP profile is often the first thing potential customers see. Here's why most businesses leave money on the table and how to fix it in an afternoon.</p>
+    </div>
+
+    <div class="stream-card">
+      <div class="stream-meta">
+        <span class="stream-date">April 2026</span>
+        <span class="stream-cat">Nonprofits</span>
+      </div>
+      <h3>Writing Digital Infrastructure Into Your Next Grant Application</h3>
+      <p>Funders want to see capacity building. Here's how to frame a website and digital strategy as the organizational infrastructure investment it actually is.</p>
+    </div>
+
+    <div class="stream-card">
+      <div class="stream-meta">
+        <span class="stream-date">March 2026</span>
+        <span class="stream-cat">AI &amp; Automation</span>
+      </div>
+      <h3>AI Receptionists: What They Actually Do (And Don't Do)</h3>
+      <p>Separating the hype from the reality. A practical look at when an AI phone agent makes sense for a small business, and when it's just an expensive answering machine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Ready to work with us<span style="color:var(--accent)">?</span></h2>
+    <p>Book a free 30-minute discovery call. No pitch deck, no pressure &mdash; just a real conversation about whether what we do can move the needle for what you're building.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="#contact" class="btn btn-primary">Schedule a Call <span class="arrow">&rarr;</span></a>
+      <a href="mailto:brennon.powers@valence-digital.com" class="btn btn-outline">Email Us Directly</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-split">
+    <div class="contact-left">
+      <div class="section-label">Get in Touch</div>
+      <h2>Let's Work<br>Together<span style="color:var(--accent)">.</span></h2>
+      <p>Whether you're starting from scratch or scaling what you've built, we'd love to hear about your project. Reach out and let's see if we're a fit.</p>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-icon">&#9993;</div>
+          <div>
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:brennon.powers@valence-digital.com">brennon.powers@valence-digital.com</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">&#128222;</div>
+          <div>
+            <div class="label">Phone</div>
+            <div class="value"><a href="tel:8282287975">(828) 228-7975</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">&#128205;</div>
+          <div>
+            <div class="label">Location</div>
+            <div class="value">North Carolina</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">&#128101;</div>
+          <div>
+            <div class="label">LinkedIn</div>
+            <div class="value"><a href="https://linkedin.com/in/brennon-powers">Valence Digital</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="contact-form">
+        <h3>Start a Conversation</h3>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Jane Smith">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="jane@company.com">
+        </div>
+        <div class="form-group">
+          <label>What Are You Looking For?</label>
+          <select>
+            <option value="" disabled selected>Select a service</option>
+            <option>Foundation Build (Website)</option>
+            <option>Visibility Sprint (SEO & Social)</option>
+            <option>Revenue Growth Sprint (Full Package)</option>
+            <option>AI Receptionist</option>
+            <option>501(c)(3) Establishment</option>
+            <option>Just a Discovery Call</option>
+            <option>Something Else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Project</label>
+          <textarea placeholder="What are you working on? What does success look like?"></textarea>
+        </div>
+        <button class="btn-submit" type="button">Send Message &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">
+        <span class="logo-mark">VD</span>
+        Valence Digital
+      </div>
+      <p>A digital consulting stop for small businesses and nonprofits. Behavioral science meets digital strategy &mdash; measurable growth, no mystery retainers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Foundation Build</a></li>
+        <li><a href="services.html">Visibility Sprint</a></li>
+        <li><a href="services.html">Revenue Growth</a></li>
+        <li><a href="services.html">AI Receptionist</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#stream">Insights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Free Digital Audit</a></li>
+        <li><a href="#">Grant Writing Guide</a></li>
+        <li><a href="#">SEO Checklist</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Valence Digital &middot; West Jefferson, NC &middot; Built with intention.</span>
+    <div class="footer-socials">
+      <a href="https://linkedin.com/in/brennon-powers" aria-label="LinkedIn">in</a>
+      <a href="mailto:brennon.powers@valence-digital.com" aria-label="Email">@</a>
+      <a href="tel:8282287975" aria-label="Phone">&#9742;</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelector('.nav-links')?.classList.remove('open');
+      }
+    });
+  });
+
+  // Nav background on scroll
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(10,10,10,0.95)';
+    } else {
+      nav.style.background = 'rgba(10,10,10,0.85)';
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
