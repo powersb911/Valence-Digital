@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valence Digital — A Digital Consulting Stop for You & Your Business</title>
+<meta name="description" content="Valence Digital combines behavioral science and digital strategy to build websites and systems that convert. Measurable growth for small businesses and nonprofits in North Carolina.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,6 +49,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(10,10,10,0.85);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 0 48px;
     height: 72px;
@@ -69,6 +71,7 @@
     font-weight: 800;
     font-size: 0.85rem;
     color: white;
+    flex-shrink: 0;
   }
   .nav-links {
     display: flex; align-items: center; gap: 32px;
@@ -100,6 +103,7 @@
     background: none;
     border: none;
     padding: 4px;
+    z-index: 101;
   }
   .hamburger span {
     width: 24px; height: 2px;
@@ -274,6 +278,7 @@
     flex-wrap: wrap;
     gap: 24px;
   }
+
   /* ── EXPANDABLE CARDS ── */
   .expand-cards {
     display: flex;
@@ -363,7 +368,6 @@
     width: 40px;
   }
 
-  /* Card gradient backgrounds */
   .expand-card:nth-child(1) .expand-card-bg { background: linear-gradient(135deg, #0a0f1a 0%, #0f2847 40%, #163a6b 100%); }
   .expand-card:nth-child(2) .expand-card-bg { background: linear-gradient(135deg, #0a1a14 0%, #0f3d2a 40%, #1a5c3e 100%); }
   .expand-card:nth-child(3) .expand-card-bg { background: linear-gradient(135deg, #1a0f1a 0%, #3b1547 40%, #5c1e6b 100%); }
@@ -735,9 +739,11 @@
     border-radius: var(--radius-sm);
     color: var(--text-white);
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 16px;
     transition: border-color 0.2s;
     outline: none;
+    -webkit-appearance: none;
+    appearance: none;
   }
   .form-group input:focus,
   .form-group textarea:focus,
@@ -845,46 +851,87 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   }
+
   @media (max-width: 768px) {
-    .nav { padding: 0 20px; }
+    .nav { padding: 0 20px; height: 64px; }
     .nav-links { display: none; }
     .nav-links.open {
       display: flex;
       flex-direction: column;
       position: absolute;
-      top: 72px; left: 0; right: 0;
+      top: 64px; left: 0; right: 0;
       background: rgba(10,10,10,0.97);
       backdrop-filter: blur(20px);
-      padding: 24px;
+      -webkit-backdrop-filter: blur(20px);
+      padding: 24px 20px;
       gap: 20px;
       border-bottom: 1px solid var(--border);
     }
+    .nav-links.open li { width: 100%; }
+    .nav-links.open a { display: block; padding: 8px 0; font-size: 1rem; }
+    .nav-links.open .nav-cta { display: block; text-align: center; padding: 14px 20px; }
     .hamburger { display: flex; }
-    .hero { padding: 140px 20px 60px; min-height: auto; }
-    .hero h1 { font-size: 2.4rem; }
-    .marquee-item { font-size: 0.9rem; }
-    .marquee-num { font-size: 1rem; }
-    .section { padding: 80px 20px; }
-    .expand-cards { flex-direction: column; height: auto; }
-    .expand-card { min-height: 80px; }
-    .expand-card:hover { flex: none; }
+
+    .hero { padding: 120px 20px 60px; min-height: auto; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-sub { font-size: 1rem; }
+    .hero-actions { flex-direction: column; }
+    .hero-actions .btn { justify-content: center; width: 100%; }
+
+    .marquee-item { font-size: 0.85rem; }
+    .marquee-num { font-size: 0.95rem; }
+    .marquee { padding: 14px 0; }
+
+    .section { padding: 64px 20px; }
+    .services-header { flex-direction: column; align-items: flex-start; }
+
+    .expand-cards { flex-direction: column; height: auto; gap: 16px; }
+    .expand-card { min-height: 160px; flex: none !important; }
     .expand-card-desc { max-height: 200px; opacity: 1; }
-    .expand-card h3 { margin-bottom: 10px; }
+    .expand-card h3 { margin-bottom: 10px; font-size: 1.1rem !important; }
     .expand-card-line { width: 30px; }
-    .process-grid { grid-template-columns: 1fr; }
+    .expand-card-content { padding: 20px; }
+
+    .process-grid { grid-template-columns: 1fr; gap: 16px; }
+    .process-card { padding: 28px 20px; gap: 16px; }
+    .process-num { font-size: 2rem; }
+
     .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-thumb { height: 180px; }
+
     .stream-grid { grid-template-columns: 1fr; }
+    .stream-header { flex-direction: column; align-items: flex-start; }
+    .stream-card { padding: 24px 20px; }
+
+    .cta-banner { padding: 64px 20px; }
+    .cta-inner h2 { font-size: 1.8rem; }
+
     .contact-split { grid-template-columns: 1fr; }
     .contact-right { border-left: none; border-top: 1px solid var(--border); }
-    .contact-left, .contact-right { padding: 60px 20px; }
-    .cta-banner { padding: 80px 20px; }
+    .contact-left { padding: 64px 20px; }
+    .contact-right { padding: 64px 20px; }
+    .contact-left h2 { font-size: 2rem; }
+
     .footer { padding: 48px 20px 24px; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .marquee { padding: 14px 0; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.85rem; }
+    .hero-label { font-size: 0.72rem; padding: 6px 12px; }
+    .section-title { font-size: 1.6rem; }
+    .expand-card { min-height: 140px; }
+    .portfolio-thumb { height: 160px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .process-card { flex-direction: column; gap: 12px; }
+    .process-num { font-size: 1.6rem; }
+    .contact-left h2 { font-size: 1.7rem; }
+    .contact-row .value { font-size: 0.85rem; }
+    .contact-row .value a { word-break: break-all; }
   }
 </style>
 </head>
@@ -920,7 +967,6 @@
     <a href="#contact" class="btn btn-primary">Book a Discovery Call <span class="arrow">&rarr;</span></a>
     <a href="services.html" class="btn btn-outline">Explore Services</a>
   </div>
-
 </section>
 
 <!-- MARQUEE -->
@@ -1133,7 +1179,7 @@
       <div class="portfolio-body">
         <div class="portfolio-tag">Food Pantry</div>
         <h3>Hiddenite Helpers</h3>
-        <p class="desc">Food pantry which supports the local community throuhg food donations and volunteer signup. This site will be used to obtain more doantions and improve their visibilty within their community.</p>
+        <p class="desc">Food pantry which supports the local community through food donations and volunteer signup. This site will be used to obtain more donations and improve their visibility within their community.</p>
       </div>
     </div>
   </div>
@@ -1239,35 +1285,37 @@
       </div>
     </div>
     <div class="contact-right">
-      <div class="contact-form">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
         <h3>Start a Conversation</h3>
         <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Jane Smith">
+          <label for="name">Your Name</label>
+          <input type="text" name="name" id="name" placeholder="Jane Smith" required>
         </div>
         <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="jane@company.com">
+          <label for="email">Email Address</label>
+          <input type="email" name="email" id="email" placeholder="jane@company.com" required>
         </div>
         <div class="form-group">
-          <label>What Are You Looking For?</label>
-          <select>
+          <label for="service">What Are You Looking For?</label>
+          <select name="service" id="service" required>
             <option value="" disabled selected>Select a service</option>
-            <option>Foundation Build (Website)</option>
-            <option>Visibility Sprint (SEO & Social)</option>
-            <option>Revenue Growth Sprint (Full Package)</option>
-            <option>AI Receptionist</option>
-            <option>501(c)(3) Establishment</option>
-            <option>Just a Discovery Call</option>
-            <option>Something Else</option>
+            <option value="Foundation Build">Foundation Build (Website)</option>
+            <option value="Visibility Sprint">Visibility Sprint (SEO & Social)</option>
+            <option value="Revenue Growth Sprint">Revenue Growth Sprint (Full Package)</option>
+            <option value="AI Receptionist">AI Receptionist</option>
+            <option value="501c3 Establishment">501(c)(3) Establishment</option>
+            <option value="Discovery Call">Just a Discovery Call</option>
+            <option value="Something Else">Something Else</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Tell Us About Your Project</label>
-          <textarea placeholder="What are you working on? What does success look like?"></textarea>
+          <label for="message">Tell Us About Your Project</label>
+          <textarea name="message" id="message" placeholder="What are you working on? What does success look like?"></textarea>
         </div>
-        <button class="btn-submit" type="button">Send Message &rarr;</button>
-      </div>
+        <button class="btn-submit" type="submit">Send Message &rarr;</button>
+      </form>
     </div>
   </div>
 </section>
@@ -1321,7 +1369,6 @@
 </footer>
 
 <script>
-  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -1333,7 +1380,6 @@
     });
   });
 
-  // Nav background on scroll
   const nav = document.querySelector('.nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
